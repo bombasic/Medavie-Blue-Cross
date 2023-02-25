@@ -5,7 +5,7 @@ const Meal = (props) => {
     <li>
       <h2>{props.title}</h2>
       <img
-        src={`https://spoonacular.com/recipeImages/${props.id}-556x370.jpg`}
+        src={`https://spoonacular.com/recipeImages/${props.id}-240x150.jpg`}
         alt={props.title}
       />
     </li>

@@ -4,7 +4,7 @@ import Meal from "./Meal";
 
 const MealList = (props) => {
   return (
-    <ul>
+    <ul class="flex gap-6 mt-6">
       {props.meals.map((meal) => (
         <Meal
           key={meal.id}

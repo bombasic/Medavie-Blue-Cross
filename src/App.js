@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import MealsList from "./components/MealsList";
+import Pagination from "./components/Pagination";
 import "./App.css";
 
 function App() {
@@ -33,10 +34,26 @@ function App() {
     }
   }, []);
 
+  // ! Pagination START
+  // User is currently on this page
+  const [currentPage, setCurrentPage] = useState(1);
+  // No of Records to be displayed on each page
+  const [recordsPerPage] = useState(5);
+
+  const indexOfLastRecord = currentPage * recordsPerPage;
+  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+
+  // Records to be displayed on the current page
+  // const currentRecords = meals.slice(indexOfFirstRecord, indexOfLastRecord);
+
+  const nPages = Math.ceil(meals.length / recordsPerPage);
+
   let content = <p></p>;
 
   if (meals.length > 0) {
-    content = <MealsList meals={meals} />;
+    content = (
+      <MealsList meals={meals.slice(indexOfFirstRecord, indexOfLastRecord)} />
+    );
   }
   if (error) {
     content = <p>{error}</p>;
@@ -66,6 +83,12 @@ function App() {
         </button>
       </div>
       <section>{content}</section>
+
+      <Pagination
+        nPages={nPages}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
     </React.Fragment>
   );
 }
