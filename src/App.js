@@ -20,7 +20,7 @@ function App() {
       }
 
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       const transformedData = data.results.map((mealData) => {
         return {
           id: mealData.id,
@@ -56,7 +56,7 @@ function App() {
 
   useEffect(() => {
     const test = document.querySelector("#input");
-    console.log(test);
+    // console.log(test);
     test.addEventListener("keydown", function (event) {
       if (event.key === "Enter") {
         document.querySelector(".button").click();
