@@ -20,6 +20,7 @@ function App() {
       }
 
       const data = await response.json();
+      console.log(data);
       const transformedData = data.results.map((mealData) => {
         return {
           id: mealData.id,
@@ -28,27 +29,21 @@ function App() {
         };
       });
       setMeals(transformedData);
-      console.log(transformedData);
     } catch (error) {
       setError(error.message);
     }
   }, []);
 
   // ! Pagination START
-  // User is currently on this page
   const [currentPage, setCurrentPage] = useState(1);
-  // No of Records to be displayed on each page
   const [recordsPerPage] = useState(5);
 
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
 
-  // Records to be displayed on the current page
-  // const currentRecords = meals.slice(indexOfFirstRecord, indexOfLastRecord);
-
   const nPages = Math.ceil(meals.length / recordsPerPage);
 
-  let content = <p></p>;
+  let content = null;
 
   if (meals.length > 0) {
     content = (
