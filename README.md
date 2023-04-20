@@ -1,2 +1,2 @@
 # Medavie-Blue-Cross
-*Not viewed / not finished
+*Not viewed / not finished.
